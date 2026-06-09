@@ -11,17 +11,13 @@ Sensores possíveis:
 - sensor_vibracao
 """
 
-# ==========================
-# 📦 COMPONENTES
-# ==========================
+# COMPONENTES
 from dash import Dash, html, dcc, Input, Output
 
 # TODO 1:
-# Complete as descrições dos sensores.
+# Complete o dicionário com o sensor e suas descrições.
 descricoes = {
-    'sensor_temp': 'TODO: descreva o sensor de temperatura.',
-    'sensor_pressao': 'TODO: descreva o sensor de pressão.',
-    'sensor_vibracao': 'TODO: descreva o sensor de vibração.'
+
 }
 
 titulo = html.H2('Consulta de Sensores Industriais')
@@ -30,28 +26,18 @@ descricao = html.P(
     'Digite o nome de um sensor para visualizar sua descrição.'
 )
 
-# TODO 2:
-# Confira o id do campo de entrada.
-# Ele será usado como Input no callback.
-campo_sensor = dcc.Input(
-    id='input-sensor',
-    type='text',
-    placeholder='Exemplo: sensor_temp'
-)
+# TODO 2: Utilize um campo de entrada (dcc.Input) para o usuário digitar o nome do sensor.
+# Atente-se ao id do campo de entrada.
+campo_sensor = 
 
-# TODO 3:
-# Confira o id da área de saída.
-# Ele será usado como Output no callback.
-saida = html.Div(id='saida-descricao')
+# TODO 3: Crie uma área de saída (html.Div) para exibir a descrição do sensor.
+# Atente-se ao id da área de saída.
+saida = 
 
-# ==========================
 # INSTÂNCIA DO APP
-# ==========================
 app = Dash(__name__)
 
-# ==========================
-# 🎨 LAYOUT
-# ==========================
+# LAYOUT
 app.layout = html.Div([
     titulo,
     descricao,
@@ -65,33 +51,24 @@ app.layout = html.Div([
     saida
 ])
 
-# ==========================
-# 🔁 CALLBACK
-# ==========================
+
+# CALLBACK
 @app.callback(
     Output('saida-descricao', 'children'),
     Input('input-sensor', 'value')
 )
 def consultar_sensor(sensor):
 
-    # TODO 4:
+    # TODO 4: Utilize uma condicional para verificar se o campo de entrada está vazio.
     # Teste a aplicação sem digitar nada e observe esta mensagem.
-    if not sensor:
-        return 'Digite o nome de um sensor.'
 
     sensor = sensor.strip()
 
-    # TODO 5:
+    # TODO 5: Utilize uma condicional para verificar se o sensor digitado existe no dicionário.
     # Verifique se o sensor digitado existe no dicionário.
-    if sensor in descricoes:
-        return descricoes[sensor]
 
-    # TODO 6:
-    # Personalize a mensagem para sensores não encontrados.
-    return 'Sensor não encontrado. Tente: sensor_temp, sensor_pressao ou sensor_vibracao.'
+    # TODO 6: Retorne a descrição do sensor utilizando o dicionário. Teste a aplicação digitando os nomes dos sensores.
 
-# ==========================
-# 🚀 EXECUÇÃO
-# ==========================
+# EXECUÇÃO
 if __name__ == '__main__':
     app.run(debug=True)
